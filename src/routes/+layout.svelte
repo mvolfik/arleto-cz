@@ -34,7 +34,7 @@
 
   <footer>
     <p>
-      Copyright © 2021 ARLETO s.r.o. (<a class="hovershade" href="mailto:arleto@arleto.cz"
+      Copyright © 2022 ARLETO s.r.o. (<a class="hovershade" href="mailto:arleto@arleto.cz"
         >arleto@arleto.cz</a
       >)
     </p>
