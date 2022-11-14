@@ -1,0 +1,72 @@
+@use "sass:map";
+@use "src/lib/utils";
+
+/////---    fonts    ---/////
+@use "@fontsource/material-icons";
+
+@use "@fontsource/roboto/scss/mixins" as Roboto;
+@use "@fontsource/roboto-slab/scss/mixins" as RobotoSlab;
+
+@function mapFilter($map, $keys) {
+  $out: ();
+  @each $key in $keys {
+    $out: map.set($out, $key, map.get($map, $key));
+  }
+  @return $out;
+}
+
+@each $weight in (utils.$roboto-normal, utils.$roboto-bold) {
+  @include Roboto.fontFace(
+    $weight: $weight,
+    $unicodeMap: mapFilter(Roboto.$unicodeMap, ("latin", "latin-ext")),
+    $fontDir: "@fontsource/#{Roboto.$fontId}/files"
+  );
+}
+
+@include RobotoSlab.fontFace(
+  $fontName: "Roboto Slab",
+  $weight: utils.$roboto-slab-light,
+  $unicodeMap: mapFilter(Roboto.$unicodeMap, ("latin", "latin-ext")),
+  $fontDir: "@fontsource/#{RobotoSlab.$fontId}/files"
+);
+
+:root {
+  @include utils.main;
+}
+/////---  fonts end  ---/////
+
+body,
+html,
+body > div {
+  margin: 0;
+  padding: 0;
+  background-color: utils.$white;
+  color: utils.$main;
+}
+
+a:not(.hiddenlink),
+.link {
+  text-decoration: 1px dotted utils.$fade underline;
+  color: utils.$link;
+}
+a.hiddenlink {
+  text-decoration: none;
+  color: inherit;
+}
+a.hovershade:hover {
+  @include utils.shaded(25);
+}
+
+.material-icons {
+  color: utils.$primary;
+  font-size: 1.3em;
+  vertical-align: bottom;
+}
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
+}

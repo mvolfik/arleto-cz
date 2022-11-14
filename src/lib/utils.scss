@@ -1,0 +1,89 @@
+@use "sass:color";
+@use "sass:math";
+
+$content-inset: 0.8rem;
+$layout-breakpoint: 38rem;
+$border-radius: 0.3rem;
+$max-width: 50rem;
+
+$darker: #111;
+$main: #444;
+$fade: #aaa;
+$white: #fafaff;
+
+$primary: #de1208;
+$primary-light: color.change($primary, $blackness: 0%, $whiteness: 90%);
+
+$link: #1e5fd6;
+
+$roboto-bold: 500;
+$roboto-normal: 400;
+$roboto-slab-light: 300;
+
+@mixin mobile {
+  @media screen and (max-width: $layout-breakpoint) {
+    @content;
+  }
+}
+
+@function shade($n) {
+  @return rgba(10, 10, 10, $n * 0.01);
+}
+@mixin shaded($n) {
+  filter: brightness(1 - $n * 0.01);
+}
+
+@mixin title {
+  font-family: "Roboto", sans-serif;
+  font-weight: $roboto-bold;
+  letter-spacing: 0.15em;
+}
+
+@mixin long-text {
+  font-family: "Roboto Slab", serif;
+  font-weight: $roboto-slab-light;
+  letter-spacing: 0.05em;
+  color: $darker;
+}
+
+@mixin main {
+  font-family: "Roboto", sans-serif;
+  font-weight: $roboto-normal;
+  letter-spacing: 0.05em;
+}
+
+@mixin hovershade {
+  &:hover {
+    @include shaded(5);
+  }
+}
+@mixin button {
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  border: none;
+  border-radius: 0.3em;
+  text-decoration: none;
+  background-color: $white;
+
+  @include main;
+
+  &:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @include hovershade;
+}
+
+@mixin fieldset {
+  display: grid;
+  border: solid $primary;
+  border-width: 3px 0 3px 3px;
+  padding: 0.3rem 1rem 0.6rem;
+  border-radius: $border-radius 0 0 $border-radius;
+
+  & > legend {
+    padding: 0 1rem;
+  }
+}

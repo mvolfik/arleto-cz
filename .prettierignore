@@ -1,0 +1,5 @@
+.svelte-kit/**
+build/**
+node_modules/**
+/content/**/*.md
+/static/admin/netlify-cms-app.js

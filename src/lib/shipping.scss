@@ -1,0 +1,18 @@
+label {
+  & > * {
+    vertical-align: middle;
+  }
+
+  img,
+  input {
+    height: 1.8em;
+    margin-bottom: 0.2em;
+  }
+}
+
+.details {
+  margin: 0.5rem 0 1rem 2rem;
+  p {
+    margin: 0 0 1rem;
+  }
+}

@@ -1,0 +1,183 @@
+backend:
+  name: "github"
+  repo: "mvolfik/evavolfova-cz-content"
+  base_url: "https://www.evavolfova.cz"
+  auth_endpoint: "api/oauth/start"
+
+local_backend: true
+site_url: "https://www.evavolfova.cz"
+
+media_folder: "assets"
+public_folder: "assets"
+
+slug:
+  clean_accents: true
+  encoding: "ascii"
+
+collections:
+  - name: "items"
+    label: "Zboží"
+    folder: "eshop"
+    format: "json"
+
+    create: true
+    fields:
+      - label: "Název"
+        name: "title"
+        widget: "string"
+
+      - label: "Cena [Kč]"
+        name: "price"
+        widget: "number"
+        default: 100
+        value_type: "int"
+        min: 1
+
+      - label: "Množství"
+        name: "stock"
+        widget: "number"
+        default: 10
+        value_type: "int"
+        min: 1
+
+      - label: "Obrázek"
+        name: "image"
+        widget: "external-image"
+
+      - label: "Krátký popis"
+        name: "description"
+        widget: "string"
+
+      - label: "Data"
+        name: "props"
+        widget: "list"
+        fields:
+          - label: "Titulek"
+            name: "key"
+            widget: "string"
+
+          - label: "Text"
+            name: "value"
+            widget: "string"
+
+      - label: "Popis"
+        name: "body"
+        widget: "markdown"
+
+      - label: "Galerie"
+        label_singular: "Obrázek"
+        name: "gallery"
+        widget: "list"
+        minimize_collapsed: true
+        fields:
+          - label: "Obrázek"
+            name: "image"
+            widget: "external-image"
+
+  - name: "projects"
+    label: "Projekty"
+    folder: "projects"
+    format: "json"
+
+    create: true
+    fields:
+      - label: "Název"
+        name: "title"
+        widget: "string"
+
+      - label: "Měsíc (1-12)"
+        name: "month"
+        widget: "number"
+        value_type: "int"
+        min: 1
+        max: 12
+
+      - label: "Rok"
+        name: "year"
+        widget: "number"
+        value_type: "int"
+        min: 1900
+        max: 2100
+
+      - label: "Obrázek"
+        name: "image"
+        widget: "external-image"
+
+      - label: "Popis"
+        name: "body"
+        widget: "markdown"
+
+      - label: "Galerie"
+        label_singular: "Obrázek"
+        name: "gallery"
+        widget: "list"
+        fields:
+          - label: "Obrázek"
+            name: "image"
+            widget: "external-image"
+
+  - name: "settings"
+    label: "Nastavení a jednotlivosti"
+    files:
+      - name: "theme"
+        label: "Obecné"
+        file: "main/theme.json"
+        fields:
+          - name: "banner"
+            label: "Banner"
+            widget: "external-image"
+          - name: "error_image"
+            label: "Fotka na chybové stránce"
+            widget: "external-image"
+
+      - name: "index"
+        label: "Úvodní stránka"
+        file: "main/index.json"
+        fields:
+          - name: "image"
+            label: "Fotka"
+            widget: "external-image"
+          - name: "text"
+            label: "Text"
+            widget: "markdown"
+
+      - name: "cv"
+        label: "CV"
+        file: "main/cv.json"
+        fields:
+          - name: "image"
+            label: "Obrázek"
+            widget: "external-image"
+          - name: "text"
+            label: "Text"
+            widget: "markdown"
+
+      - name: "contact"
+        label: "Stránka kontakt"
+        file: "main/contact.json"
+        fields:
+          - name: "image"
+            label: "Obrázek"
+            widget: "external-image"
+          - name: "text"
+            label: "Text"
+            widget: "markdown"
+
+      - name: "projects"
+        label: "Stránka projekty"
+        file: "main/projects.json"
+        fields:
+          - name: "image"
+            label: "Fotka"
+            widget: "external-image"
+          - name: "text"
+            label: "Úvodní text"
+            widget: "markdown"
+
+      - name: "vop"
+        label: "Obchodní podmínky"
+        file: "main/vop.json"
+        fields:
+          - name: "vop"
+            label: "Obchodní podmínky"
+            widget: "markdown"
