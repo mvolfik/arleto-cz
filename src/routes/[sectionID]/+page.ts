@@ -25,5 +25,3 @@ export const load: PageLoad = async ({ params: { sectionID }, fetch, parent }) =
   const { sectionData } = response;
   return { sectionData, sectionID };
 };
-
-export const csr = false;

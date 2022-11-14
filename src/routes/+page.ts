@@ -15,5 +15,3 @@ export const load: PageLoad = async ({ fetch }) => {
   const props = (await response.json()) as IndexContent;
   return props;
 };
-
-export const csr = false;
