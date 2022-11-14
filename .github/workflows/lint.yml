@@ -28,12 +28,12 @@ jobs:
 
       - name: Mock env
         run: |
-          echo -e "SECRET_KEY=" \
-            "\nPUBLIC_PACKETA_APIKEY=" \
-            "\nGITHUB_CLIENT_ID=" \
-            "\nGITHUB_CLIENT_SECRET=" \
-            "\nAUTHORIZED_USERS_GITHUB_IDS=" \
-            "\nDATABASE_URL=" > .env
+          echo -e "SECRET_KEY=a" \
+            "\nPUBLIC_PACKETA_APIKEY=a" \
+            "\nGITHUB_CLIENT_ID=a" \
+            "\nGITHUB_CLIENT_SECRET=a" \
+            "\nAUTHORIZED_USERS_GITHUB_IDS=a" \
+            "\nDATABASE_URL=a" > .env
 
       - name: Build (to get generated types)
         run: yarn run build
