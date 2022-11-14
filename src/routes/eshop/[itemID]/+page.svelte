@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>{item.title} | e-shop | Eva Volfová</title>
+  <title>{item.title} | e-shop | ARLETO s.r.o.</title>
 </svelte:head>
 
 <div class="layout">
@@ -23,11 +23,11 @@
   <div class="image">
     <!-- bookmark: img -->
     <img
-      src="https://c.evavolfova.cz/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
+      src="https://c.arleto.mvolfik.com/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
       alt="fotografie"
       srcset={item.image.sizes
         .sort((a, b) => a - b)
-        .map((size) => `https://c.evavolfova.cz/a/${item.image.id}/${size}/webp ${size}w`)
+        .map((size) => `https://c.arleto.mvolfik.com/a/${item.image.id}/${size}/webp ${size}w`)
         .join(", ")}
       sizes="25rem"
     />
@@ -57,11 +57,11 @@
         <div>
           <!-- bookmark: img -->
           <img
-            src="https://c.evavolfova.cz/a/{image.id}/{Math.max(...image.sizes)}/webp"
+            src="https://c.arleto.mvolfik.com/a/{image.id}/{Math.max(...image.sizes)}/webp"
             alt="fotografie"
             srcset={image.sizes
               .sort((a, b) => a - b)
-              .map((size) => `https://c.evavolfova.cz/a/${image.id}/${size}/webp ${size}w`)
+              .map((size) => `https://c.arleto.mvolfik.com/a/${image.id}/${size}/webp ${size}w`)
               .join(", ")}
             sizes="(max-width: 50rem) 100vw, 50rem"
           />

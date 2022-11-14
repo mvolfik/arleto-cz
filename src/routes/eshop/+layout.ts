@@ -3,7 +3,7 @@ import { error } from "@sveltejs/kit";
 import type { LayoutLoad } from "./$types";
 export const load: LayoutLoad = async ({ fetch }) => {
   const response: Response | { ok: false } = await fetch(
-    "https://c.evavolfova.cz/content/eshop"
+    "https://c.arleto.mvolfik.com/content/eshop"
   ).catch((e) => {
     console.error(e);
     return {

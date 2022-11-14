@@ -5,7 +5,7 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
-    <title>Content Management | Eva Volfová</title>
+    <title>Content Management | ARLETO s.r.o.</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
@@ -27,7 +27,7 @@
         NetlifyCMSWidgetExternalImage(
           async (f) => {
             console.log(f);
-            const response = await fetch("https://c.evavolfova.cz/upload/" + f.name, {
+            const response = await fetch("https://c.arleto.mvolfik.com/upload/" + f.name, {
               method: "POST",
               body: f,
             });
@@ -39,7 +39,7 @@
                 ? [map.get("id"), map.get("sizes").toArray()]
                 : [map.id, map.sizes];
             console.log(id, sizes, meta);
-            return `https://c.evavolfova.cz/a/${id}/${Math.max(...sizes)}/webp`;
+            return `https://c.arleto.mvolfik.com/a/${id}/${Math.max(...sizes)}/webp`;
           }
         )
       );

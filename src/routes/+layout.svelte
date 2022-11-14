@@ -14,32 +14,34 @@
 <div class="banner">
   <!-- bookmark: img -->
   <img
-    src="https://c.evavolfova.cz/a/{data.theme?.banner.id}/{Math.max(
+    src="https://c.arleto.mvolfik.com/a/{data.theme?.banner.id}/{Math.max(
       ...(data.theme?.banner.sizes ?? [])
     )}/webp"
     alt="banner"
     srcset={data.theme?.banner.sizes
       .sort((a, b) => a - b)
-      .map((size) => `https://c.evavolfova.cz/a/${data.theme?.banner.id}/${size}/webp ${size}w`)
+      .map(
+        (size) => `https://c.arleto.mvolfik.com/a/${data.theme?.banner.id}/${size}/webp ${size}w`
+      )
       .join(", ")}
     sizes="(min-width: 600px) 100vw, 600px"
   />
 </div>
 <div class="wrapper">
-  <Header />
+  <Header sections={data.sections ?? {}} />
 
   <slot />
 
   <footer>
     <p>
-      Copyright © 2021 Eva Volfová (<a class="hovershade" href="mailto:eva@evavolfova.cz"
-        >eva@evavolfova.cz</a
+      Copyright © 2021 ARLETO s.r.o. (<a class="hovershade" href="mailto:arleto@arleto.cz"
+        >arleto@arleto.cz</a
       >)
     </p>
     <p>
       <span title="Code">&lt;/&gt;</span> by
-      <a class="hovershade" href="https://mvolfik.github.io">Matěj Volf</a>
-      (<a class="hovershade" href="mailto:webmaster@evavolfova.cz">webmaster@evavolfova.cz</a>)
+      <a class="hovershade" href="https://mvolfik.github.io" target="_blank">Matěj Volf</a>
+      (<a class="hovershade" href="mailto:webmaster@arleto.cz">webmaster@arleto.cz</a>)
     </p>
     {#if $page.url.pathname.startsWith("/eshop/")}
       <p><a href="/eshop/podminky">Obchodní podmínky</a></p>

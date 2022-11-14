@@ -6,8 +6,7 @@
 </script>
 
 <svelte:head>
-  <title>Obchodní podmínky | e-shop | ARLETO s.r.o.</title>
-  <meta name="robots" content="noindex" />
+  <title>{data.sectionData.title} | ARLETO s.r.o.</title>
 </svelte:head>
 
-<Markdown t={data.vop} />
+<Markdown t={data.sectionData.body} />

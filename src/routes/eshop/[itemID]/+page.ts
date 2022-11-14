@@ -2,7 +2,7 @@ import type { Item } from "$lib/utils";
 import { error } from "@sveltejs/kit";
 import type { PageLoad } from "./$types";
 export const load: PageLoad = async ({ params: { itemID }, fetch, parent }) => {
-  const response = await fetch("https://c.evavolfova.cz/content/eshop/" + itemID)
+  const response = await fetch("https://c.arleto.mvolfik.com/content/eshop/" + itemID)
     .then((r) => r.json() as Promise<Item>)
     .then((item) => ({ ok: true as const, item }))
     .catch((e) => {

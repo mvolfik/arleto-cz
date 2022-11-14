@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-  <title>Výběr produktů | e-shop | Eva Volfová</title>
+  <title>Výběr produktů | e-shop | ARLETO s.r.o.</title>
 </svelte:head>
 
 <div class="filters">
@@ -33,11 +33,11 @@
     <a animate:flip={{ duration: 500 }} href={"/eshop/" + id + "/"}>
       <!-- bookmark: img -->
       <img
-        src="https://c.evavolfova.cz/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
+        src="https://c.arleto.mvolfik.com/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
         alt="fotografie"
         srcset={item.image.sizes
           .sort((a, b) => a - b)
-          .map((size) => `https://c.evavolfova.cz/a/${item.image.id}/${size}/webp ${size}w`)
+          .map((size) => `https://c.arleto.mvolfik.com/a/${item.image.id}/${size}/webp ${size}w`)
           .join(", ")}
         sizes="17rem"
       />

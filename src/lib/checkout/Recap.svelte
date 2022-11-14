@@ -63,11 +63,11 @@
       <a href="/eshop/{id}" class="title">{item.title}</a>
       <span class="img"
         ><img
-          src="https://c.evavolfova.cz/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
+          src="https://c.arleto.mvolfik.com/a/{item.image.id}/{Math.max(...item.image.sizes)}/webp"
           alt="fotografie"
           srcset={item.image.sizes
             .sort((a, b) => a - b)
-            .map((size) => `https://c.evavolfova.cz/a/${item.image.id}/${size}/webp ${size}w`)
+            .map((size) => `https://c.arleto.mvolfik.com/a/${item.image.id}/${size}/webp ${size}w`)
             .join(", ")}
           sizes="(min-width: 50rem) 15rem, 30vw"
         /></span

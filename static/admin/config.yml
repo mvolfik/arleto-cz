@@ -1,11 +1,11 @@
 backend:
   name: "github"
-  repo: "mvolfik/evavolfova-cz-content"
-  base_url: "https://www.evavolfova.cz"
+  repo: "mvolfik/arleto-cz-content"
+  base_url: "http://localhost:3000"
   auth_endpoint: "api/oauth/start"
 
 local_backend: true
-site_url: "https://www.evavolfova.cz"
+site_url: "https://www.arleto.mvolfik.com"
 
 media_folder: "assets"
 public_folder: "assets"
@@ -74,47 +74,27 @@ collections:
             name: "image"
             widget: "external-image"
 
-  - name: "projects"
-    label: "Projekty"
-    folder: "projects"
+  - name: "sections"
+    label: "Sekce"
+    folder: "sections"
     format: "json"
 
     create: true
     fields:
-      - label: "Název"
+      - label: "Titulek"
         name: "title"
         widget: "string"
 
-      - label: "Měsíc (1-12)"
-        name: "month"
+      - label: "Pořadí (zleva doprava, úvod = 0, eshop = 20)"
+        name: "order"
         widget: "number"
         value_type: "int"
-        min: 1
-        max: 12
-
-      - label: "Rok"
-        name: "year"
-        widget: "number"
-        value_type: "int"
-        min: 1900
-        max: 2100
-
-      - label: "Obrázek"
-        name: "image"
-        widget: "external-image"
+        min: -10
+        max: 99
 
       - label: "Popis"
         name: "body"
         widget: "markdown"
-
-      - label: "Galerie"
-        label_singular: "Obrázek"
-        name: "gallery"
-        widget: "list"
-        fields:
-          - label: "Obrázek"
-            name: "image"
-            widget: "external-image"
 
   - name: "settings"
     label: "Nastavení a jednotlivosti"
@@ -139,39 +119,6 @@ collections:
             widget: "external-image"
           - name: "text"
             label: "Text"
-            widget: "markdown"
-
-      - name: "cv"
-        label: "CV"
-        file: "main/cv.json"
-        fields:
-          - name: "image"
-            label: "Obrázek"
-            widget: "external-image"
-          - name: "text"
-            label: "Text"
-            widget: "markdown"
-
-      - name: "contact"
-        label: "Stránka kontakt"
-        file: "main/contact.json"
-        fields:
-          - name: "image"
-            label: "Obrázek"
-            widget: "external-image"
-          - name: "text"
-            label: "Text"
-            widget: "markdown"
-
-      - name: "projects"
-        label: "Stránka projekty"
-        file: "main/projects.json"
-        fields:
-          - name: "image"
-            label: "Fotka"
-            widget: "external-image"
-          - name: "text"
-            label: "Úvodní text"
             widget: "markdown"
 
       - name: "vop"

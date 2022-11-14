@@ -69,22 +69,8 @@
   async function sendOrder() {
     if (sending) return;
     sending = true;
-    try {
-      const req = await fetch("https://evavolfova-cz.herokuapp.com/submit", {
-        method: "POST",
-        body: JSON.stringify(stageData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const resp = await req.json();
-      alert(
-        "Vaše objednávka byla úspěšně odeslána. Potvrzení a informace k platbě a dopravě byly odeslány na zadanou e-mailovou adresu"
-      );
-      $cart = {};
-    } catch (e) {
-      alert("Omlouváme se, ale došlo k chybě. Zkuste to prosím znovu.");
-    }
+    alert("Not implemented yet");
+    await new Promise((r) => setTimeout(r, 1000));
     sending = false;
   }
 
@@ -92,7 +78,7 @@
 </script>
 
 <svelte:head>
-  <title>e-shop | Eva Volfová</title>
+  <title>e-shop | ARLETO s.r.o.</title>
   <meta name="robots" content="noindex" />
 </svelte:head>
 

@@ -1,104 +1,11 @@
 <script lang="ts">
-  import type { DBOrder } from "src/routes/api/orders/db";
   import type { PageData } from "./$types";
 
   export let data: PageData;
-
-  let creatingFacturoid = new Set();
-  let creatingPacketa = new Set();
-  async function createInvoice(order: DBOrder) {
-    creatingFacturoid.add(order.id);
-    creatingFacturoid = creatingFacturoid;
-    try {
-      const contactResponse = await fetch("/api/fakturoid", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          path: ["subjects.json"],
-          method: "POST",
-          body: JSON.stringify({
-            name: order.data[1].storedData.name,
-            street: order.data[1].storedData.street,
-            city: order.data[1].storedData.city,
-            country: "CZ",
-          }),
-        }),
-      });
-      const contactData = (await contactResponse.json()) as { id: number };
-      const dateString = new Date(order.order_time).toISOString().slice(0, 10);
-      const lines: { name: string; quantity: number; unit_price: number; unit?: string }[] =
-        Object.entries(order.data[0].storedData.cart).map(([item, number]) => ({
-          name: order.data[0].storedData.shopItems[item].title,
-          quantity: number,
-          unit_price: order.data[0].storedData.shopItems[item].price,
-          unit: "ks",
-        }));
-      lines.push({
-        name: "Způsob platby: " + order.data[1].title,
-        unit_price: order.data[1].price,
-        quantity: 1,
-      });
-      lines.push({
-        name: "Způsob dopravy: " + order.data[2].title,
-        unit_price: order.data[2].price,
-        quantity: 1,
-      });
-      const invoiceResponse = await fetch("/api/fakturoid", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          path: ["invoices.json"],
-          method: "POST",
-          body: JSON.stringify({
-            subject_id: contactData.id,
-            number_format_id: 435109,
-            variable_symbol: order.id,
-            currency: "CZK",
-            payment_method: order.data[1].title === "Dobírka" ? "cod" : "bank",
-            due: 7,
-            issued_on: dateString,
-            taxable_fulfillment_due: dateString,
-            lines,
-          }),
-        }),
-      });
-      const invoiceData = (await invoiceResponse.json()) as { id: number };
-      const updateResponse = await fetch("/api/orders/update-fakturoid", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          order_id: order.id,
-          fakturoid_id: invoiceData.id,
-        }),
-      })
-        .then((x) => x.json())
-        .catch((e) => {
-          console.error(e);
-          return { ok: false as const };
-        });
-      if (!updateResponse.ok)
-        alert(
-          "The invoice was created, but failed saving it to the database. Find it in the Fakturoid app."
-        );
-
-      order.fakturoid_id = invoiceData.id;
-      data.orders = data.orders;
-    } catch (e) {
-      console.error(e);
-    }
-    creatingFacturoid.delete(order.id);
-    creatingFacturoid = creatingFacturoid;
-  }
-
-  async function createPacketa(order: DBOrder) {}
 </script>
 
 <svelte:head>
-  <title>Seznam objednávek | admin Eva Volfová</title>
+  <title>Seznam objednávek | admin ARLETO s.r.o.</title>
 </svelte:head>
 
 <div class="header">
@@ -145,46 +52,7 @@
         <span>{orderData[1].title}</span>
       </div>
       <div class="actions">
-        {#if order.id < 50}
-          <span>Faktura mimo Fakturoid</span>
-        {:else if creatingFacturoid.has(order.id)}
-          <button disabled style:color="rgb(132, 114, 0)">Vytvářím fakturu...</button>
-        {:else if order.fakturoid_id === null}
-          <button style:color="rgb(132, 114, 0)" on:click={() => createInvoice(order)}>
-            Vytvořit fakturu
-          </button>
-        {:else}
-          <span>
-            <button
-              style:color="rgb(0, 53, 178)"
-              on:click={async () => {
-                const response = await fetch("/api/fakturoid", {
-                  method: "POST",
-                  body: JSON.stringify({
-                    path: ["invoices", `${order.fakturoid_id}.json`],
-                    method: "GET",
-                  }),
-                  headers: {
-                    "Content-Type": "application/json",
-                  },
-                });
-                if (!response.ok) alert("Opening failed, please try again");
-                else window.open((await response.json()).public_html_url);
-              }}>Zobrazit fakturu</button
-            >
-          </span>
-        {/if}
-        {#if orderData[2].title === "Zásilkovna"}
-          {#if creatingPacketa.has(order.id)}
-            <button disabled style:color="rgb(132, 114, 0)">Generuji štítek...</button>
-          {:else if order.packeta_id === null}
-            <button style:color="rgb(132,114,0)" on:click={() => createPacketa(order)}>
-              Vygenerovat štítek
-            </button>
-          {:else}
-            <span>Todo</span>
-          {/if}
-        {/if}
+        <span>Todo</span>
       </div>
     </div>
   {/each}
@@ -193,9 +61,6 @@
 <style lang="scss">
   @use "src/lib/utils";
 
-  // :global(div.wrapper) {
-  //   max-width: none !important;
-  // }
   .header {
     display: flex;
     justify-content: space-between;

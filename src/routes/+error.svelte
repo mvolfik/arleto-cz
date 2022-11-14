@@ -21,20 +21,21 @@
 </script>
 
 <svelte:head>
-  <title>Chyba | Eva Volfová</title>
+  <title>Chyba | ARLETO s.r.o.</title>
 </svelte:head>
 
 <p>
   <!-- bookmark: img -->
   <img
-    src="https://c.evavolfova.cz/a/{data.theme?.error_image.id}/{Math.max(
+    src="https://c.arleto.mvolfik.com/a/{data.theme?.error_image.id}/{Math.max(
       ...(data.theme?.error_image.sizes ?? [])
     )}/webp"
     alt="fotografie"
     srcset={data.theme?.error_image.sizes
       .sort((a, b) => a - b)
       .map(
-        (size) => `https://c.evavolfova.cz/a/${data.theme?.error_image.id}/${size}/webp ${size}w`
+        (size) =>
+          `https://c.arleto.mvolfik.com/a/${data.theme?.error_image.id}/${size}/webp ${size}w`
       )
       .join(", ")}
   />

@@ -22,5 +22,8 @@
     :global(p) {
       font-size: 0.9rem;
     }
+    :global(strong) {
+      font-weight: 600;
+    }
   }
 </style>

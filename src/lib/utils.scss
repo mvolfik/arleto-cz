@@ -64,7 +64,7 @@ $roboto-slab-light: 300;
   gap: 0.3em;
   border: none;
   border-radius: 0.3em;
-  text-decoration: none;
+  text-decoration: none !important;
   background-color: $white;
 
   @include main;

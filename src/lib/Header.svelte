@@ -1,6 +1,18 @@
 <script lang="ts">
   import { page } from "$app/stores";
 
+  export let sections: Record<string, { title: string; order: number }>;
+
+  $: menuItems = Object.entries(sections)
+    .map(([id, section]) => ({
+      id,
+      ...section,
+    }))
+    .concat([
+      { id: "eshop", title: "e-shop", order: 20 },
+      { id: "", title: "Úvod", order: 0 },
+    ])
+    .sort((a, b) => a.order - b.order);
   let open = false;
   let path: string;
   $: {
@@ -11,13 +23,12 @@
 
 <header>
   <nav class:open>
-    <a class:active={path === "/"} class="always" href="/">Úvod</a>
-
-    <a class:active={path === "/cv/"} href="/cv/">CV</a>
-    <a class:active={path.startsWith("/projekty/")} href="/projekty/">projekty</a>
-    <a class:active={path.startsWith("/eshop/")} href="/eshop/">e-shop</a>
-    <a class:active={path === "/kontakt/"} href="/kontakt/">kontakt</a>
-
+    {#each menuItems as item (item.id)}
+      {@const url = item.id ? `/${item.id}/` : "/"}
+      <a class:active={item.id === "eshop" ? path.startsWith("/eshop/") : path === url} href={url}
+        >{item.title}</a
+      >
+    {/each}
     <button
       type="button"
       class="burger"

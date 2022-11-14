@@ -29,9 +29,6 @@ jobs:
       - name: Mock env
         run: |
           echo -e "SECRET_KEY=" \
-            "\nTOKEN_PACKETA=" \
-            "\nTOKEN_FAKTUROID=" \
-            "\nFAKTUROID_ACCOUNT_SLUG=" \
             "\nPUBLIC_PACKETA_APIKEY=" \
             "\nGITHUB_CLIENT_ID=" \
             "\nGITHUB_CLIENT_SECRET=" \
@@ -64,4 +61,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/mvolfik/evavolfova-cz:latest
+          tags: ghcr.io/mvolfik/arleto-cz:latest

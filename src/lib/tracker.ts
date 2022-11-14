@@ -4,8 +4,8 @@ export let tracker: ReturnType<typeof Plausible>;
 
 export function setup() {
   tracker = Plausible({
-    domain: "evavolfova.cz",
-    apiHost: "https://evavolfova.cz",
+    domain: "arleto.cz",
+    apiHost: "https://arleto.mvolfik.com",
   });
   // tracker.enableAutoPageviews();
   // tracker.enableAutoOutboundTracking();

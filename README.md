@@ -1,6 +1,6 @@
-# evavolfova-cz
+# arleto-cz
 
-Generator for evavolfova.cz
+Generator for arleto.cz
 
 ## Developing
 

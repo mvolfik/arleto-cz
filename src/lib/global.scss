@@ -44,7 +44,7 @@ body > div {
   color: utils.$main;
 }
 
-a:not(.hiddenlink),
+a,
 .link {
   text-decoration: 1px dotted utils.$fade underline;
   color: utils.$link;

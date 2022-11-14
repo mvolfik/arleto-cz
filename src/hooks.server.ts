@@ -15,7 +15,7 @@ export const handle: Handle = ({ event, resolve }) => {
 export const handleFetch: HandleFetch = async ({ request, fetch }) => {
   if (
     env.CONTENT_BYPASS_HOST !== undefined &&
-    request.url.startsWith("https://c.evavolfova.cz/content/")
+    request.url.startsWith("https://c.arleto.mvolfik.com/content/")
   ) {
     const url = new URL(request.url);
     url.protocol = "http";
