@@ -43,6 +43,43 @@
           }
         )
       );
+      NetlifyCmsApp.registerEditorComponent({
+        id: "external-image",
+        label: "Image",
+        fields: [
+          {
+            name: "image",
+            label: "Image",
+            widget: "external-image",
+          },
+        ],
+        pattern: /^::img\{id=([a-z0-9A-Z-_.]+) sizes=([0-9,]+) formats=([a-z,]+)\}$/m,
+        fromBlock: (match) => {
+          return {
+            image: {
+              id: match[1],
+              sizes: match[2].split(",").map((x) => parseInt(x)),
+              formats: match[3].split(","),
+            },
+          };
+        },
+        toBlock: ({ image: map }) => {
+          const [id, sizes, formats] =
+            typeof map.get === "function"
+              ? [map.get("id"), map.get("sizes").toArray(), map.get("formats").toArray()]
+              : [map.id, map.sizes, map.formats];
+          return `::img{id=${id} sizes=${sizes.join(",")} formats=${formats.join(",")}}`;
+        },
+        toPreview: ({ image: map }) => {
+          const [id, sizes, formats] =
+            typeof map.get === "function"
+              ? [map.get("id"), map.get("sizes").toArray(), map.get("formats").toArray()]
+              : [map.id, map.sizes, map.formats];
+          return `<p><img src="https://c.arleto.mvolfik.com/a/${id}/${Math.max(
+            ...sizes
+          )}/webp" /></p>`;
+        },
+      });
       NetlifyCmsApp.init();
     </script>
   </body>

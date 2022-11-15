@@ -10,7 +10,7 @@
       return;
     }
 
-    if (e.origin === window.origin || e.origin === "http://localhost:3000") {
+    if (e.origin === window.origin) {
       state = 1;
       const msg =
         data.error !== undefined

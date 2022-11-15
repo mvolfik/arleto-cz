@@ -3,7 +3,7 @@
   import { getContext } from "svelte";
   import type { Writable } from "svelte/store";
   import type { CartItems, Item } from "$lib/utils";
-  import Markdown from "$lib/Markdown.svelte";
+  import Markdown from "$lib/markdown/Markdown.svelte";
   import type { PageData } from "./$types";
 
   const cart: Writable<CartItems> = getContext("cart-store");

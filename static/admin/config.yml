@@ -1,7 +1,7 @@
 backend:
   name: "github"
   repo: "mvolfik/arleto-cz-content"
-  base_url: "http://localhost:3000"
+  base_url: "https://www.arleto.mvolfik.com"
   auth_endpoint: "api/oauth/start"
 
 local_backend: true
@@ -63,6 +63,7 @@ collections:
       - label: "Popis"
         name: "body"
         widget: "markdown"
+        editor_components: ["external-image"]
 
       - label: "Galerie"
         label_singular: "Obrázek"
